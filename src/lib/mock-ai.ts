@@ -207,9 +207,9 @@ export function generateMeetingSummary(
 
   const actions: ActionItem[] = raw.map((task, i) => ({
     task: task.replace(/^(action item|action|todo)[:\-\s]*/i, "").replace(/\.$/, ""),
-    owner: ownerPool[i % ownerPool.length],
+    owner: ownerPool[i % ownerPool.length]!,
     deadline: relativeDate(3 + i * 2, date),
-    priority: priorityPool[i % 3],
+    priority: priorityPool[i % 3]!,
   }));
 
   return {
@@ -325,7 +325,7 @@ export function generateTaskPlan(
         break;
       }
     }
-    const day = view === "Weekly" ? weekdays[dayIndex] : "Today";
+    const day = view === "Weekly" ? weekdays[dayIndex]! : "Today";
     blocks.push({
       start: fmt(cursor),
       end: fmt(cursor + dur),
