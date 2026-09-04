@@ -44,7 +44,7 @@ export const Route = createFileRoute("/meetings")({
       },
     ],
   }),
-  component: MeetingsPage;
+  component: MeetingsPage,
 });
 
 function MeetingsPage() {
