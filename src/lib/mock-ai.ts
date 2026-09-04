@@ -28,8 +28,8 @@ function sentences(text: string): string[] {
 
 function lines(text: string): string[] {
   return text
-    .split(/\n|•|- |\d+\.\s/)
-    .map((s) => s.trim().replace(/^[-•]\s*/, ""))
+    .split(/\n/)
+    .map((s) => s.trim().replace(/^[-•*]\s*|^\d+[.)]\s*/, ""))
     .filter(Boolean);
 }
 
