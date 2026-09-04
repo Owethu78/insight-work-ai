@@ -205,9 +205,14 @@ export function generateMeetingSummary(
           "Prepare the stakeholder summary for the weekly update",
         ];
 
+  const nameMatch = (t: string) => {
+    const m = /\b(Priya|Daniel|Sofia|Marcus|Alex|Dana)\b/.exec(t);
+    return m ? `${m[1]}.` : null;
+  };
+
   const actions: ActionItem[] = raw.map((task, i) => ({
     task: task.replace(/^(action item|action|todo)[:\-\s]*/i, "").replace(/\.$/, ""),
-    owner: ownerPool[i % ownerPool.length]!,
+    owner: nameMatch(task) ?? ownerPool[i % ownerPool.length]!,
     deadline: relativeDate(3 + i * 2, date),
     priority: priorityPool[i % 3]!,
   }));
