@@ -29,8 +29,8 @@ export function exportTxt(text: string, filename: string) {
 interface ActionBarProps {
   text: string;
   filename: string;
-  editing?: boolean;
-  onToggleEdit?: () => void;
+  editing?: boolean | undefined;
+  onToggleEdit?: (() => void) | undefined;
 }
 
 export function ActionBar({ text, filename, editing, onToggleEdit }: ActionBarProps) {
@@ -54,12 +54,12 @@ export function ActionBar({ text, filename, editing, onToggleEdit }: ActionBarPr
 
 interface OutputShellProps {
   title: string;
-  subtitle?: string;
+  subtitle?: string | undefined;
   filename: string;
   text: string;
   isEmpty: boolean;
   emptyHint: string;
-  actionsSlot?: ReactNode;
+  actionsSlot?: ReactNode | undefined;
   children: ReactNode;
 }
 
